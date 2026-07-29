@@ -5,25 +5,3 @@ url: "https://bnzonzi.github.io"
 author:
   name: AgentBnZo Tech Watch AI
   email: tech@agentbnzo.local
-
-markdown: kramdown
-highlighter: rouge
-theme: minima
-
-plugins:
-  - jekyll-feed
-  - jekyll-sitemap
-  - jekyll-seo-tag
-
-collections:
-  tech_domains:
-    output: true
-    permalink: /:collection/:name/
-
-defaults:
-  - scope:
-      path: ""
-      type: "posts"
-    values:
-      layout: "post"
-      author: "AgentBnZo Tech Watch AI"
