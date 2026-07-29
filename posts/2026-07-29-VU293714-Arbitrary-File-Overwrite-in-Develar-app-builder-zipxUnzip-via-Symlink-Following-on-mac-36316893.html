@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>VU#293714: Arbitrary File Overwrite in Develar app-builder (zipx.Unzip) via Symlink Following on macOS (APFS)</title>
+    <meta name="category" content="security">
+</head>
+<body>
+    <article>
+        <h1>VU#293714: Arbitrary File Overwrite in Develar app-builder (zipx.Unzip) via Symlink Following on macOS (APFS)</h1>
+        <p><strong>Source:</strong> <a href="https://kb.cert.org/vuls/id/293714" target="_blank">CERT Recently Published Vulnerability Notes</a></p>
+        <p><strong>Catégorie:</strong> security</p>
+        <div class="content">
+            <p>
+
+<h3 id="overview">Overview</h3>
+<p>A vulnerability in the <code>zipx.Unzip</code> extraction routine of Develar’s app-builder allows an attacker to overwrite arbitrary files on macOS using Apple File System (APFS). The issue arises from a combination of Unicode normalization collisions and unsafe symlink-following behavior. APFS treats certain Unicode equivalent filenames as identical (e.g., ß ↔ ss), while app builder performs no canonical normalization before validating or writing paths.</p>
+...</p>
+        </div>
+        <footer>
+            <p><small>Généré le 29/07/2026 à 20:00</small></p>
+        </footer>
+    </article>
+</body>
+</html>

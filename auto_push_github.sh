@@ -4,6 +4,12 @@
 set -e
 cd /media/raid10to/projets/blog
 TIMESTAMP=$(date '+%Y-%m-%d %H:%M')
+
+# Copier index.html de output/ vers racine (GitHub Pages sert la racine)
+if [ -f output/index.html ]; then
+  cp output/index.html index.html
+fi
+
 git add -A 2>/dev/null
 if git diff --cached --quiet; then
   echo "[$TIMESTAMP] Rien à pousser"
