@@ -1,0 +1,29 @@
+# Python
+__pycache__/
+*.pyc
+*.pyo
+.venv/
+venv/
+
+# Logs et metadata (régénérés par feeders)
+logs/
+metadata/
+*.log
+feeder_api.log
+feeder_status.json
+
+# Symlink crews (résout path feeder mais ne pas pusher)
+crews
+
+# Drafts et content temp
+drafts/
+content/
+
+# DB et cache
+*.db
+chroma_db/
+rag_local_db/
+
+# OS
+.DS_Store
+Thumbs.db

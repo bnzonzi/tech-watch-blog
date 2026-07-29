@@ -1,0 +1,22 @@
+{
+  "feeds": [
+    "https://korben.info/feed",
+    "https://www.youtube.com/feeds/videos.xml?channel_id=UCvKqTb-65iAmXK59sFNKINQ",
+    "https://www.youtube.com/feeds/videos.xml?channel_id=UC5g_Zgi8TOC6GvvnxzQCY2w"
+  ],
+  "blog_config": {
+    "output_dir": "output",
+    "posts_per_page": 10,
+    "max_articles_per_run": 50,
+    "update_frequency_hours": 1
+  },
+  "ai_models": {
+    "default_model": "gpt-4o-mini",
+    "fallback_models": ["gpt-4.1-nano", "gpt-4.1-mini"]
+  },
+  "processing": {
+    "quality_threshold": 0.7,
+    "max_content_length": 5000,
+    "enable_smart_processor": true
+  }
+}

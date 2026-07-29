@@ -1,0 +1,96 @@
+{
+  "agentbnzo_config": {
+    "enabled_categories": {
+      "ai_ml": {
+        "enabled": true,
+        "youtube_subcategories": {
+          "enabled": false,
+          "excluded_channels": [],
+          "quality_filter": "high"
+        },
+        "non_youtube_sources": {
+          "enabled": true
+        }
+      },
+      "china_tech_ai": {
+        "enabled": true,
+        "youtube_subcategories": {
+          "enabled": false
+        },
+        "non_youtube_sources": {
+          "enabled": true
+        }
+      },
+      "cloud_computing": {
+        "enabled": true,
+        "youtube_subcategories": {
+          "enabled": false
+        },
+        "non_youtube_sources": {
+          "enabled": true
+        }
+      },
+      "enterprise": {
+        "enabled": false,
+        "youtube_subcategories": {
+          "enabled": false
+        },
+        "non_youtube_sources": {
+          "enabled": false
+        }
+      },
+      "hardware_tech": {
+        "enabled": true,
+        "youtube_subcategories": {
+          "enabled": false
+        },
+        "non_youtube_sources": {
+          "enabled": true
+        }
+      },
+      "mobile_android": {
+        "enabled": false,
+        "youtube_subcategories": {
+          "enabled": false
+        },
+        "non_youtube_sources": {
+          "enabled": false
+        }
+      },
+      "mobile_ios": {
+        "enabled": false,
+        "youtube_subcategories": {
+          "enabled": false
+        },
+        "non_youtube_sources": {
+          "enabled": false
+        }
+      },
+      "security": {
+        "enabled": true,
+        "youtube_subcategories": {
+          "enabled": false
+        },
+        "non_youtube_sources": {
+          "enabled": true
+        }
+      },
+      "software_dev": {
+        "enabled": true,
+        "youtube_subcategories": {
+          "enabled": false
+        },
+        "non_youtube_sources": {
+          "enabled": true
+        }
+      }
+    },
+    "global_filters": {
+      "exclude_religion": true,
+      "exclude_sports": false,
+      "max_articles_per_category": 50,
+      "quality_threshold": "medium",
+      "agentbnzo_relevance_only": true
+    }
+  }
+}
