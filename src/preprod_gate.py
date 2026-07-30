@@ -155,6 +155,15 @@ def sanitize_content_html(raw: str, max_chars: int = 1200) -> str:
                 if j != i
             ):
                 continue
+        # Drop near-duplicates / substrings (RSS flatten artifacts)
+        if any(
+            plain.lower() != other.lower()
+            and plain.lower() in other.lower()
+            and len(plain) > 60
+            for j, other in enumerate(plain_parts)
+            if j != i
+        ):
+            continue
         cleaned.append(part)
     parts = cleaned or parts
 
