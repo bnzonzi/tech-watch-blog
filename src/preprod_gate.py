@@ -144,6 +144,20 @@ def sanitize_content_html(raw: str, max_chars: int = 1200) -> str:
         text = re.sub(r"\s+", " ", text)[:max_chars]
         parts = [f"<p>{escape(text)}{'…' if len(text) >= max_chars else ''}</p>"]
 
+    # Drop short heading-only paras that are prefixes of a longer sibling (anti-doublon Overview)
+    cleaned: List[str] = []
+    plain_parts = [BeautifulSoup(p, "html.parser").get_text(" ", strip=True) for p in parts]
+    for i, (part, plain) in enumerate(zip(parts, plain_parts)):
+        if len(plain) < 40:
+            if any(
+                other.lower().startswith(plain.lower()) and other != plain
+                for j, other in enumerate(plain_parts)
+                if j != i
+            ):
+                continue
+        cleaned.append(part)
+    parts = cleaned or parts
+
     # Cap total length of text
     out: List[str] = []
     total = 0
