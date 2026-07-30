@@ -150,7 +150,7 @@ def sanitize_content_html(raw: str, max_chars: int = 1200) -> str:
     for i, (part, plain) in enumerate(zip(parts, plain_parts)):
         if len(plain) < 40:
             if any(
-                other.lower().startswith(plain.lower()) and other != plain
+                plain.lower() in other.lower() and other != plain
                 for j, other in enumerate(plain_parts)
                 if j != i
             ):
