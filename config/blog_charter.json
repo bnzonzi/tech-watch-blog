@@ -1,0 +1,36 @@
+{
+  "version": "2026-07-30",
+  "name": "AgentBnZo Tech Watch — charte pré-production",
+  "production_dir": "posts",
+  "quarantine_dir": "drafts/quarantine",
+  "rules": {
+    "min_content_chars": 120,
+    "max_title_chars": 120,
+    "max_content_snippet_chars": 1200,
+    "require_template_css": true,
+    "require_viewport_meta": true,
+    "forbid_nested_block_in_p": true,
+    "forbid_raw_rss_html_dump": true,
+    "chinese": {
+      "category": "china_tech_ai",
+      "cjk_char_threshold": 8,
+      "require_french_enrichment_before_production": true,
+      "enrichment_markers": [
+        "Analyse AgentBnZo",
+        "Résumé exécutif",
+        "enriched_fr",
+        "Traduction titre"
+      ],
+      "block_message": "Source chinoise / CJK détecté: passer par enrichissement FR (enrich_chinese_articles / process traduction) AVANT production"
+    },
+    "title": {
+      "shorten_vuln_ids": true,
+      "vuln_prefixes": ["VU#", "CVE-"]
+    }
+  },
+  "owners": {
+    "gate": "Golem",
+    "editorial_voice": "Korben",
+    "process_docs": "Composeur"
+  }
+}

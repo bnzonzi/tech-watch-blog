@@ -38,6 +38,7 @@ SRC_DIR = BLOG_ROOT / 'src'
 if str(SRC_DIR) not in sys.path:
     sys.path.insert(0, str(SRC_DIR))
 from blog_template import render_post_page
+from preprod_gate import load_charter, quarantine_path, validate_article_dict
 
 # Créer répertoires
 POSTS_DIR.mkdir(exist_ok=True)
@@ -51,8 +52,11 @@ class CategoryAwareFeeder:
     def __init__(self):
         self.feeds_map = self.load_feeds_mapping()
         self.config = self.load_user_config()
+        self.charter = load_charter()
         self.stats = {
             'total_fetched': 0,
+            'quarantined': 0,
+            'gate_blocked': 0,
             'filtered_out': 0,
             'saved': 0,
             'errors': 0,
@@ -201,61 +205,77 @@ class CategoryAwareFeeder:
             return []
 
     def save_article(self, article):
-        """Sauvegarde un article"""
+        """Sauvegarde un article UNIQUEMENT s'il passe la gate pré-production."""
         try:
-            # Générer nom de fichier unique
-            title_clean = article['title'][:100].replace(' ', '-').replace('/', '-')
-            title_clean = ''.join(c for c in title_clean if c.isalnum() or c in '-_')
-
-            # Hash pour unicité
+            gate = validate_article_dict(article, self.charter)
             content_hash = hashlib.md5(article['link'].encode()).hexdigest()[:8]
+            title_clean = gate.sanitized_title[:100].replace(' ', '-').replace('/', '-')
+            title_clean = ''.join(c for c in title_clean if c.isalnum() or c in '-_')
             filename = f"{datetime.now().strftime('%Y-%m-%d')}-{title_clean}-{content_hash}.html"
-            filepath = POSTS_DIR / filename
 
-            # Éviter doublons
-            if filepath.exists():
-                logger.debug(f"⏩ Article existe: {filename}")
-                return False
-
-            # Contenu HTML (tronqué, échappé via BeautifulSoup texte déjà HTML-ish)
-            raw_content = (article.get('content') or '')[:800]
-            content_html = f"<p>{raw_content}...</p>" if raw_content else "<p><em>Résumé indisponible.</em></p>"
             generated_at = datetime.now().strftime('%d/%m/%Y à %H:%M')
-
             html_content = render_post_page(
-                title=article['title'],
-                content_html=content_html,
+                title=gate.sanitized_title,
+                content_html=gate.sanitized_content_html,
                 source_url=article.get('link', '#'),
                 source_feed=article.get('source_feed', 'source'),
                 category=article.get('category', 'general'),
                 generated_at=generated_at,
-                description=raw_content,
+                description=BeautifulSoup(gate.sanitized_content_html, 'html.parser').get_text(' ', strip=True),
             )
 
-            with open(filepath, 'w', encoding='utf-8') as f:
-                f.write(html_content)
+            # Gate KO → quarantaine (JAMAIS posts/ production)
+            if not gate.ok:
+                qpath = quarantine_path(self.charter) / filename
+                qpath.write_text(html_content, encoding='utf-8')
+                meta = {
+                    'title': gate.sanitized_title,
+                    'category': article.get('category'),
+                    'source_url': article.get('link'),
+                    'source_feed': article.get('source_feed'),
+                    'feed_url': article.get('feed_url'),
+                    'generated_at': datetime.now().isoformat(),
+                    'filename': filename,
+                    'preprod_status': 'quarantine',
+                    'gate_reasons': gate.reasons,
+                    'gate_warnings': gate.warnings,
+                    **gate.metadata_flags,
+                }
+                meta_file = METADATA_DIR / f"quarantine_{datetime.now().strftime('%Y%m%d_%H%M%S')}_{content_hash}.json"
+                meta_file.write_text(json.dumps(meta, indent=2, ensure_ascii=False), encoding='utf-8')
+                self.stats['quarantined'] += 1
+                self.stats['gate_blocked'] += 1
+                logger.warning(f"🚫 QUARANTINE [{article.get('category')}] {gate.sanitized_title[:50]}… — {'; '.join(gate.reasons)}")
+                return False
 
-            # Métadonnées
+            filepath = POSTS_DIR / filename
+            if filepath.exists():
+                logger.debug(f"⏩ Article existe: {filename}")
+                return False
+
+            filepath.write_text(html_content, encoding='utf-8')
+
             metadata = {
-                'title': article['title'],
+                'title': gate.sanitized_title,
                 'category': article['category'],
                 'source_url': article['link'],
                 'source_feed': article['source_feed'],
                 'feed_url': article['feed_url'],
                 'generated_at': datetime.now().isoformat(),
-                'filename': filename
+                'filename': filename,
+                'preprod_status': 'production',
+                'gate_warnings': gate.warnings,
+                **gate.metadata_flags,
             }
-
             metadata_file = METADATA_DIR / f"metadata_{datetime.now().strftime('%Y%m%d_%H%M%S')}_{content_hash}.json"
-            with open(metadata_file, 'w', encoding='utf-8') as f:
-                json.dump(metadata, f, indent=2, ensure_ascii=False)
+            metadata_file.write_text(json.dumps(metadata, indent=2, ensure_ascii=False), encoding='utf-8')
 
-            # Stats
             self.stats['saved'] += 1
             cat = article['category']
             self.stats['by_category'][cat] = self.stats['by_category'].get(cat, 0) + 1
-
-            logger.info(f"✅ [{cat}] {article['title'][:60]}...")
+            if gate.warnings:
+                logger.info(f"⚠️ [{cat}] warnings: {gate.warnings}")
+            logger.info(f"✅ [{cat}] {gate.sanitized_title[:60]}...")
             return True
 
         except Exception as e:
@@ -298,7 +318,8 @@ class CategoryAwareFeeder:
         logger.info("=" * 60)
         logger.info(f"Total récupéré: {self.stats['total_fetched']}")
         logger.info(f"Filtrés: {self.stats['filtered_out']}")
-        logger.info(f"Sauvegardés: {self.stats['saved']}")
+        logger.info(f"Gate bloqués / quarantaine: {self.stats['gate_blocked']} / {self.stats['quarantined']}")
+        logger.info(f"Sauvegardés (production): {self.stats['saved']}")
         logger.info(f"Erreurs: {self.stats['errors']}")
         logger.info("\n📁 Par catégorie:")
         for cat, count in sorted(self.stats['by_category'].items()):
