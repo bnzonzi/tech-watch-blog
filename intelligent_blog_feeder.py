@@ -6,6 +6,7 @@ Utilise:
 - agentbnzo_blog_config.json (config Category Manager)
 """
 import os
+import sys
 import logging
 import json
 import hashlib
@@ -33,6 +34,10 @@ CONFIG_FILE = BLOG_ROOT / 'agentbnzo_blog_config.json'
 POSTS_DIR = BLOG_ROOT / 'posts'
 METADATA_DIR = BLOG_ROOT / 'metadata'
 LOGS_DIR = BLOG_ROOT / 'logs'
+SRC_DIR = BLOG_ROOT / 'src'
+if str(SRC_DIR) not in sys.path:
+    sys.path.insert(0, str(SRC_DIR))
+from blog_template import render_post_page
 
 # Créer répertoires
 POSTS_DIR.mkdir(exist_ok=True)
@@ -212,28 +217,20 @@ class CategoryAwareFeeder:
                 logger.debug(f"⏩ Article existe: {filename}")
                 return False
 
-            # Créer HTML
-            html_content = f"""<!DOCTYPE html>
-<html lang="fr">
-<head>
-    <meta charset="UTF-8">
-    <title>{article['title']}</title>
-    <meta name="category" content="{article['category']}">
-</head>
-<body>
-    <article>
-        <h1>{article['title']}</h1>
-        <p><strong>Source:</strong> <a href="{article['link']}" target="_blank">{article['source_feed']}</a></p>
-        <p><strong>Catégorie:</strong> {article['category']}</p>
-        <div class="content">
-            <p>{article['content'][:500]}...</p>
-        </div>
-        <footer>
-            <p><small>Généré le {datetime.now().strftime('%d/%m/%Y à %H:%M')}</small></p>
-        </footer>
-    </article>
-</body>
-</html>"""
+            # Contenu HTML (tronqué, échappé via BeautifulSoup texte déjà HTML-ish)
+            raw_content = (article.get('content') or '')[:800]
+            content_html = f"<p>{raw_content}...</p>" if raw_content else "<p><em>Résumé indisponible.</em></p>"
+            generated_at = datetime.now().strftime('%d/%m/%Y à %H:%M')
+
+            html_content = render_post_page(
+                title=article['title'],
+                content_html=content_html,
+                source_url=article.get('link', '#'),
+                source_feed=article.get('source_feed', 'source'),
+                category=article.get('category', 'general'),
+                generated_at=generated_at,
+                description=raw_content,
+            )
 
             with open(filepath, 'w', encoding='utf-8') as f:
                 f.write(html_content)

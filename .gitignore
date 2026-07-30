@@ -15,6 +15,9 @@ feeder_status.json
 # Symlink crews (résout path feeder mais ne pas pusher)
 crews
 
+# Clone GitHub Pages dédié (auto_push)
+.pages-repo/
+
 # Drafts et content temp
 drafts/
 content/

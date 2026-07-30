@@ -3,162 +3,191 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Blog AgentBnZo - Techniques Multi-Agents</title>
-    <style>
-        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; max-width: 1000px; margin: 0 auto; padding: 20px; background: #f8f9fa; }
-        .header { background: white; padding: 30px; border-radius: 10px; margin-bottom: 30px; box-shadow: 0 2px 10px rgba(0,0,0,0.1); }
-        .stats { display: flex; gap: 20px; margin: 20px 0; }
-        .stat { background: #0066cc; color: white; padding: 15px; border-radius: 5px; text-align: center; flex: 1; }
-        .posts { display: grid; gap: 20px; }
-        .post-preview { background: white; padding: 20px; border-radius: 10px; box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
-        .post-preview h2 { margin: 0 0 10px 0; }
-        .post-preview a { text-decoration: none; color: #0066cc; }
-        .meta { color: #666; font-size: 0.9em; }
-        h1 { color: #0066cc; margin: 0; }
-        .subtitle { color: #666; margin: 10px 0; }
-        .pagination { text-align: center; margin: 30px 0; }
-        .pagination a, .pagination span { display: inline-block; padding: 8px 12px; margin: 0 4px; border: 1px solid #ddd; text-decoration: none; border-radius: 4px; }
-        .pagination a { color: #0066cc; }
-        .pagination a:hover { background: #f0f8ff; }
-        .pagination .current-page { background: #0066cc; color: white; }
-        .last-update { text-align: center; color: #666; font-size: 0.9em; margin-top: 30px; }
-    </style>
+    <title>AgentBnZo Tech Watch</title>
+    <meta name="description" content="Veille technologique multi-agents — CrewAI · GLM · RAG">
+    <meta name="author" content="AgentBnZo">
+    <link rel="canonical" href="https://bnzonzi.github.io/tech-watch-blog">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="AgentBnZo Tech Watch">
+    <meta property="og:description" content="Veille technologique multi-agents — CrewAI · GLM · RAG">
+    <meta property="og:url" content="https://bnzonzi.github.io/tech-watch-blog">
+    <meta property="og:site_name" content="AgentBnZo Tech Watch">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="AgentBnZo Tech Watch">
+    <meta name="twitter:description" content="Veille technologique multi-agents — CrewAI · GLM · RAG">
+    <link rel="stylesheet" href="assets/css/blog.css">
 </head>
 <body>
-    <div class="header">
-        <h1>🤖 Blog AgentBnZo</h1>
-        <p class="subtitle">Techniques et pratiques pour l'écosystème multi-agents</p>
-        <div class="stats">
-            <div class="stat">
-                <strong>64</strong><br>Articles Total
-            </div>
-            <div class="stat">
-                <strong>63</strong><br>Aujourd'hui
-            </div>
-            <div class="stat">
-                <strong>100%</strong><br>Gemini 2.5 Flash
-            </div>
-            <div class="stat">
-                <strong>Auto</strong><br>Alimentation
-            </div>
-        </div>
+<a class="skip-link" href="#main">Aller au contenu</a>
+<header class="site-header">
+  <div class="site-header-inner">
+    <a class="brand" href="index.html">
+      <span class="brand-mark" aria-hidden="true">ABZ</span>
+      <span class="brand-text">
+        <strong>AgentBnZo Tech Watch</strong>
+        <span>Veille technologique multi-agents — CrewAI · GLM · RAG</span>
+      </span>
+    </a>
+    <nav class="nav" aria-label="Navigation principale">
+      <a href="index.html">Accueil</a>
+      <a href="https://github.com/bnzonzi/tech-watch-blog" rel="noopener" target="_blank">GitHub</a>
+      <a href="https://bnzonzi.github.io/tech-watch-blog/">Live</a>
+    </nav>
+  </div>
+</header>
+<main id="main" class="container">
+  <section class="hero">
+    <h1>Blog AgentBnZo</h1>
+    <p class="subtitle">Veille technologique multi-agents — CrewAI · GLM · RAG</p>
+    <div class="stats" role="group" aria-label="Statistiques">
+      <div class="stat"><strong>126</strong><span>Articles</span></div>
+      <div class="stat"><strong>63</strong><span>Aujourd'hui</span></div>
+      <div class="stat"><strong>Auto</strong><span>Feeders</span></div>
+      <div class="stat"><strong>P0</strong><span>Design</span></div>
     </div>
-
-    <div class="posts">
-        
+  </section>
+  <section class="posts" aria-label="Articles">
+    
         <article class="post-preview">
-            <h2><a href="posts/2026-07-29-AI-writes-your-code-Who-reviews-it-ec27d776.html">2026 07 29 Ai Writes Your Code Who Reviews It Ec27D776</a></h2>
-            <p class="meta">📅 2026-07-29 | 🔖 HTML</p>
+            <span class="badge">markdown</span>
+            <h2><a href="posts/README.md">Posts</a></h2>
+            <p class="meta">2026-07-30 · MD</p>
         </article>
 
         <article class="post-preview">
-            <h2><a href="posts/2026-07-29-Fast-inference-changes-what-you-can-build-4b304676.html">2026 07 29 Fast Inference Changes What You Can Build 4B304676</a></h2>
-            <p class="meta">📅 2026-07-29 | 🔖 HTML</p>
+            <span class="badge">ai_ml</span>
+            <h2><a href="posts/2026-07-30-AI-writes-your-code-Who-reviews-it-ec27d776.html">AI writes your code. Who reviews it?</a></h2>
+            <p class="meta">2026-07-30 · HTML</p>
         </article>
 
         <article class="post-preview">
-            <h2><a href="posts/2026-07-29-7-day-Voice-AI-Build-Challenge-9ca109ec.html">2026 07 29 7 Day Voice Ai Build Challenge 9Ca109Ec</a></h2>
-            <p class="meta">📅 2026-07-29 | 🔖 HTML</p>
+            <span class="badge">ai_ml</span>
+            <h2><a href="posts/2026-07-30-Fast-inference-changes-what-you-can-build-4b304676.html">Fast inference changes what you can build</a></h2>
+            <p class="meta">2026-07-30 · HTML</p>
         </article>
 
         <article class="post-preview">
-            <h2><a href="posts/2026-07-29-Voice-for-AI-Agents-and-Applications-73e9c00c.html">2026 07 29 Voice For Ai Agents And Applications 73E9C00C</a></h2>
-            <p class="meta">📅 2026-07-29 | 🔖 HTML</p>
+            <span class="badge">ai_ml</span>
+            <h2><a href="posts/2026-07-30-7-day-Voice-AI-Build-Challenge-9ca109ec.html">7-day Voice AI Build Challenge</a></h2>
+            <p class="meta">2026-07-30 · HTML</p>
         </article>
 
         <article class="post-preview">
-            <h2><a href="posts/2026-07-29-Optimize-deploy-and-benchmark-an-open-source-LLM-with-vLLM-7ecac2ec.html">2026 07 29 Optimize Deploy And Benchmark An Open Source Llm With Vllm 7Ecac2Ec</a></h2>
-            <p class="meta">📅 2026-07-29 | 🔖 HTML</p>
+            <span class="badge">ai_ml</span>
+            <h2><a href="posts/2026-07-30-Voice-for-AI-Agents-and-Applications-73e9c00c.html">Voice for AI Agents and Applications</a></h2>
+            <p class="meta">2026-07-30 · HTML</p>
         </article>
 
         <article class="post-preview">
-            <h2><a href="posts/2026-07-29-Exploring-scientific-machine-learning-pipelines-through-the-SimulAI-toolkit-d41d8cd9.html">2026 07 29 Exploring Scientific Machine Learning Pipelines Through The Simulai Toolkit D41D8Cd9</a></h2>
-            <p class="meta">📅 2026-07-29 | 🔖 HTML</p>
+            <span class="badge">ai_ml</span>
+            <h2><a href="posts/2026-07-30-Optimize-deploy-and-benchmark-an-open-source-LLM-with-vLLM-7ecac2ec.html">Optimize, deploy, and benchmark an open-source LLM with vLLM</a></h2>
+            <p class="meta">2026-07-30 · HTML</p>
         </article>
 
         <article class="post-preview">
-            <h2><a href="posts/2026-07-29-Colossal-LLaMA-2-Low-Cost-and-High-quality-Domain-specific-LLM-Solution-Using-LLaMA-and-d41d8cd9.html">2026 07 29 Colossal Llama 2 Low Cost And High Quality Domain Specific Llm Solution Using Llama And D41D8Cd9</a></h2>
-            <p class="meta">📅 2026-07-29 | 🔖 HTML</p>
+            <span class="badge">ai_ml</span>
+            <h2><a href="posts/2026-07-30-Exploring-scientific-machine-learning-pipelines-through-the-SimulAI-toolkit-d41d8cd9.html">Exploring scientific machine learning pipelines through the SimulAI toolkit</a></h2>
+            <p class="meta">2026-07-30 · HTML</p>
         </article>
 
         <article class="post-preview">
-            <h2><a href="posts/2026-07-29-3D-rotations-and-spatial-transformations-made-easy-with-RoMa-d41d8cd9.html">2026 07 29 3D Rotations And Spatial Transformations Made Easy With Roma D41D8Cd9</a></h2>
-            <p class="meta">📅 2026-07-29 | 🔖 HTML</p>
+            <span class="badge">ai_ml</span>
+            <h2><a href="posts/2026-07-30-Colossal-LLaMA-2-Low-Cost-and-High-quality-Domain-specific-LLM-Solution-Using-LLaMA-and-d41d8cd9.html">Colossal-LLaMA-2: Low Cost and High-quality Domain-specific LLM Solution Using LLaMA and…</a></h2>
+            <p class="meta">2026-07-30 · HTML</p>
         </article>
 
         <article class="post-preview">
-            <h2><a href="posts/2026-07-29-torchdistilla-modular-configuration-driven-framework-for-reproducible-deep-learning-and-d41d8cd9.html">2026 07 29 Torchdistilla Modular Configuration Driven Framework For Reproducible Deep Learning And D41D8Cd9</a></h2>
-            <p class="meta">📅 2026-07-29 | 🔖 HTML</p>
+            <span class="badge">ai_ml</span>
+            <h2><a href="posts/2026-07-30-3D-rotations-and-spatial-transformations-made-easy-with-RoMa-d41d8cd9.html">3D rotations and spatial transformations made easy with RoMa</a></h2>
+            <p class="meta">2026-07-30 · HTML</p>
         </article>
 
         <article class="post-preview">
-            <h2><a href="posts/2026-07-29-PyPose-A-Library-for-Robot-Learning-with-Physics-based-Optimization-d41d8cd9.html">2026 07 29 Pypose A Library For Robot Learning With Physics Based Optimization D41D8Cd9</a></h2>
-            <p class="meta">📅 2026-07-29 | 🔖 HTML</p>
+            <span class="badge">ai_ml</span>
+            <h2><a href="posts/2026-07-30-torchdistilla-modular-configuration-driven-framework-for-reproducible-deep-learning-and-d41d8cd9.html">torchdistill — a modular, configuration-driven framework for reproducible deep learning and…</a></h2>
+            <p class="meta">2026-07-30 · HTML</p>
         </article>
 
         <article class="post-preview">
-            <h2><a href="posts/2026-07-29-Your-Brain-Chip-in-2036-According-to-AI--8c79838a.html">2026 07 29 Your Brain Chip In 2036 According To Ai  8C79838A</a></h2>
-            <p class="meta">📅 2026-07-29 | 🔖 HTML</p>
+            <span class="badge">ai_ml</span>
+            <h2><a href="posts/2026-07-30-PyPose-A-Library-for-Robot-Learning-with-Physics-based-Optimization-d41d8cd9.html">PyPose: A Library for Robot Learning with Physics-based Optimization</a></h2>
+            <p class="meta">2026-07-30 · HTML</p>
         </article>
 
         <article class="post-preview">
-            <h2><a href="posts/2026-07-29-Neuralinks-Wires-are-Invisible-to-The-Brain--1d138f83.html">2026 07 29 Neuralinks Wires Are Invisible To The Brain  1D138F83</a></h2>
-            <p class="meta">📅 2026-07-29 | 🔖 HTML</p>
+            <span class="badge">ai_ml</span>
+            <h2><a href="posts/2026-07-30-Your-Brain-Chip-in-2036-According-to-AI--8c79838a.html">Your Brain Chip in 2036, According to AI 🤓</a></h2>
+            <p class="meta">2026-07-30 · HTML</p>
         </article>
 
         <article class="post-preview">
-            <h2><a href="posts/2026-07-29-Why-Hackers-Wont-Succeed-in-Controlling-Neuralink-Brain-Chips-04af9746.html">2026 07 29 Why Hackers Wont Succeed In Controlling Neuralink Brain Chips 04Af9746</a></h2>
-            <p class="meta">📅 2026-07-29 | 🔖 HTML</p>
+            <span class="badge">ai_ml</span>
+            <h2><a href="posts/2026-07-30-Neuralinks-Wires-are-Invisible-to-The-Brain--1d138f83.html">Neuralink’s Wires are Invisible to The Brain 🧵</a></h2>
+            <p class="meta">2026-07-30 · HTML</p>
         </article>
 
         <article class="post-preview">
-            <h2><a href="posts/2026-07-29-Neuralink-2026-Update-75909cd6.html">2026 07 29 Neuralink 2026 Update 75909Cd6</a></h2>
-            <p class="meta">📅 2026-07-29 | 🔖 HTML</p>
+            <span class="badge">ai_ml</span>
+            <h2><a href="posts/2026-07-30-Why-Hackers-Wont-Succeed-in-Controlling-Neuralink-Brain-Chips-04af9746.html">Why Hackers Won&#x27;t Succeed in Controlling Neuralink Brain Chips</a></h2>
+            <p class="meta">2026-07-30 · HTML</p>
         </article>
 
         <article class="post-preview">
-            <h2><a href="posts/2026-07-29-Beyond-Gaming-Neuralinks-Roadmap-for-Quadriplegia-and-Motor-Control-bb465881.html">2026 07 29 Beyond Gaming Neuralinks Roadmap For Quadriplegia And Motor Control Bb465881</a></h2>
-            <p class="meta">📅 2026-07-29 | 🔖 HTML</p>
+            <span class="badge">ai_ml</span>
+            <h2><a href="posts/2026-07-30-Neuralink-2026-Update-75909cd6.html">Neuralink 2026 Update</a></h2>
+            <p class="meta">2026-07-30 · HTML</p>
         </article>
 
         <article class="post-preview">
-            <h2><a href="posts/2026-07-29-OpenAI-Announced-GPT-56-Yet-Almost-Nobody-Can-Use-It-fbdc3a56.html">2026 07 29 Openai Announced Gpt 56 Yet Almost Nobody Can Use It Fbdc3A56</a></h2>
-            <p class="meta">📅 2026-07-29 | 🔖 HTML</p>
+            <span class="badge">ai_ml</span>
+            <h2><a href="posts/2026-07-30-Beyond-Gaming-Neuralinks-Roadmap-for-Quadriplegia-and-Motor-Control-bb465881.html">Beyond Gaming: Neuralink&#x27;s Roadmap for Quadriplegia and Motor Control</a></h2>
+            <p class="meta">2026-07-30 · HTML</p>
         </article>
 
         <article class="post-preview">
-            <h2><a href="posts/2026-07-29-Fable-5-Build-Agent-Controlled-Signal-Map-Open-Source-0cf10937.html">2026 07 29 Fable 5 Build Agent Controlled Signal Map Open Source 0Cf10937</a></h2>
-            <p class="meta">📅 2026-07-29 | 🔖 HTML</p>
+            <span class="badge">ai_ml</span>
+            <h2><a href="posts/2026-07-30-OpenAI-Announced-GPT-56-Yet-Almost-Nobody-Can-Use-It-fbdc3a56.html">OpenAI Announced GPT-5.6... Yet Almost Nobody Can Use It</a></h2>
+            <p class="meta">2026-07-30 · HTML</p>
         </article>
 
         <article class="post-preview">
-            <h2><a href="posts/2026-07-29-GPT-56-is-Lurking-ChatGPT-Voice-Overhaul-Sonnet-5-Rumor--Fugu-Surprise-034ea42f.html">2026 07 29 Gpt 56 Is Lurking Chatgpt Voice Overhaul Sonnet 5 Rumor  Fugu Surprise 034Ea42F</a></h2>
-            <p class="meta">📅 2026-07-29 | 🔖 HTML</p>
+            <span class="badge">ai_ml</span>
+            <h2><a href="posts/2026-07-30-Fable-5-Build-Agent-Controlled-Signal-Map-Open-Source-0cf10937.html">Fable 5 Build: Agent Controlled Signal Map! Open Source</a></h2>
+            <p class="meta">2026-07-30 · HTML</p>
         </article>
 
         <article class="post-preview">
-            <h2><a href="posts/2026-07-29-Hands-on-Fable-5-makes-GPT-55-feel-like-a-toy-2447815c.html">2026 07 29 Hands On Fable 5 Makes Gpt 55 Feel Like A Toy 2447815C</a></h2>
-            <p class="meta">📅 2026-07-29 | 🔖 HTML</p>
+            <span class="badge">ai_ml</span>
+            <h2><a href="posts/2026-07-30-GPT-56-is-Lurking-ChatGPT-Voice-Overhaul-Sonnet-5-Rumor--Fugu-Surprise-034ea42f.html">GPT-5.6 is Lurking, ChatGPT Voice Overhaul, Sonnet 5 Rumor &amp; “Fugu” Surprise!</a></h2>
+            <p class="meta">2026-07-30 · HTML</p>
         </article>
 
         <article class="post-preview">
-            <h2><a href="posts/2026-07-29-ULTIMATE-KREA-2-LoRA-Training-Get-PERFECT-RESULTS-90ca1176.html">2026 07 29 Ultimate Krea 2 Lora Training Get Perfect Results 90Ca1176</a></h2>
-            <p class="meta">📅 2026-07-29 | 🔖 HTML</p>
+            <span class="badge">ai_ml</span>
+            <h2><a href="posts/2026-07-30-Hands-on-Fable-5-makes-GPT-55-feel-like-a-toy-2447815c.html">Hands on: Fable 5 makes GPT 5.5 feel like a &quot;toy&quot;</a></h2>
+            <p class="meta">2026-07-30 · HTML</p>
         </article>
-    </div>
-
-    <div class="pagination">
-<span class="current-page">1</span>
+  </section>
+  <nav class="pagination" aria-label="Pagination">
+<span class="current-page" aria-current="page">1</span>
 <a href="index_page_2.html">2</a>
 <a href="index_page_3.html">3</a>
 <a href="index_page_4.html">4</a>
-<a href="index_page_2.html">Suivant →</a>
-</div>
-
-    <div class="last-update">
-        📅 Dernière mise à jour: 2026-07-29 20:00:43
-        | 📄 Page 1/4
-        | 📊 20 articles affichés
+<a href="index_page_5.html">5</a>
+<a href="index_page_6.html">6</a>
+<a href="index_page_7.html">7</a>
+<a href="index_page_2.html" rel="next">Suivant →</a>
+</nav>
+  <p class="last-update">Mise à jour: 2026-07-30 06:31:46 · Page 1/7 · 20 articles</p>
+</main>
+<footer class="site-footer">
+  <div class="site-footer-inner">
+    <div>© AgentBnZo · veille autonome (CrewAI feeders)</div>
+    <div>
+      <a href="https://github.com/bnzonzi/tech-watch-blog" rel="noopener" target="_blank">Repo</a>
+      · <a href="https://bnzonzi.github.io/tech-watch-blog/">GitHub Pages</a>
     </div>
+  </div>
+</footer>
 </body>
 </html>
