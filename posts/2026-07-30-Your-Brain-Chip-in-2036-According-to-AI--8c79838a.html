@@ -16,6 +16,18 @@
     <meta name="twitter:title" content="Your Brain Chip in 2036, According to AI 🤓">
     <meta name="twitter:description" content="Read more about Neuralink: https://www.neurapod.com/ Neura Pod is a series covering topics related to Neuralink, Inc. Topics such as brain-machine interfac…">
     <meta name="category" content="ai_ml">
+    <script>
+    (function () {
+      try {
+        var theme = localStorage.getItem("abz-theme");
+        if (theme !== "light" && theme !== "dark") theme = "dark";
+        document.documentElement.setAttribute("data-theme", theme);
+        document.documentElement.style.colorScheme = theme;
+      } catch (e) {
+        document.documentElement.setAttribute("data-theme", "dark");
+      }
+    })();
+    </script>
     <link rel="stylesheet" href="../assets/css/blog.css">
 </head>
 <body>
@@ -31,6 +43,7 @@
     </a>
     <nav class="nav" aria-label="Navigation principale">
       <a href="../index.html">Accueil</a>
+      <a href="../settings.html">Réglages</a>
       <a href="https://github.com/bnzonzi/tech-watch-blog" rel="noopener" target="_blank">GitHub</a>
       <a href="https://bnzonzi.github.io/tech-watch-blog/">Live</a>
     </nav>

@@ -9,15 +9,40 @@ SITE_NAME = "AgentBnZo Tech Watch"
 SITE_TAGLINE = "Veille technologique multi-agents — CrewAI · GLM · RAG"
 SITE_URL = "https://bnzonzi.github.io/tech-watch-blog"
 GITHUB_URL = "https://github.com/bnzonzi/tech-watch-blog"
+THEME_STORAGE_KEY = "abz-theme"
+
+
+def _prefix(depth: int = 0) -> str:
+    return "../" * depth if depth else ""
 
 
 def _css_href(depth: int = 0) -> str:
-    prefix = "../" * depth if depth else ""
-    return f"{prefix}assets/css/blog.css"
+    return f"{_prefix(depth)}assets/css/blog.css"
 
 
 def _home_href(depth: int = 0) -> str:
     return "../" * depth + "index.html" if depth else "index.html"
+
+
+def _settings_href(depth: int = 0) -> str:
+    return f"{_prefix(depth)}settings.html"
+
+
+def render_theme_boot() -> str:
+    """Blocking head script. Applies the stored theme before first paint."""
+    key = THEME_STORAGE_KEY
+    return f"""    <script>
+    (function () {{
+      try {{
+        var theme = localStorage.getItem("{key}");
+        if (theme !== "light" && theme !== "dark") theme = "dark";
+        document.documentElement.setAttribute("data-theme", theme);
+        document.documentElement.style.colorScheme = theme;
+      }} catch (e) {{
+        document.documentElement.setAttribute("data-theme", "dark");
+      }}
+    }})();
+    </script>"""
 
 
 def render_head(
@@ -51,12 +76,15 @@ def render_head(
     <meta name="twitter:card" content="summary">
     <meta name="twitter:title" content="{safe_title}">
     <meta name="twitter:description" content="{desc}">{cat_meta}
+{render_theme_boot()}
     <link rel="stylesheet" href="{_css_href(depth)}">
 </head>"""
 
 
-def render_header(depth: int = 0) -> str:
+def render_header(depth: int = 0, active: str = "") -> str:
     home = _home_href(depth)
+    settings = _settings_href(depth)
+    settings_current = ' aria-current="page"' if active == "settings" else ""
     return f"""<a class="skip-link" href="#main">Aller au contenu</a>
 <header class="site-header">
   <div class="site-header-inner">
@@ -69,6 +97,7 @@ def render_header(depth: int = 0) -> str:
     </a>
     <nav class="nav" aria-label="Navigation principale">
       <a href="{home}">Accueil</a>
+      <a href="{settings}"{settings_current}>Réglages</a>
       <a href="{GITHUB_URL}" rel="noopener" target="_blank">GitHub</a>
       <a href="{SITE_URL}/">Live</a>
     </nav>
@@ -142,6 +171,41 @@ def render_post_page(
   </article>
 </main>
 {footer}
+</body>
+</html>
+"""
+
+
+def render_settings_page() -> str:
+    head = render_head(
+        "Réglages",
+        description="Préférences d'affichage du blog AgentBnZo Tech Watch.",
+        canonical=f"{SITE_URL}/settings.html",
+        depth=0,
+    )
+    header = render_header(depth=0, active="settings")
+    footer = render_footer()
+    return f"""{head}
+<body>
+{header}
+<main id="main" class="container">
+  <section class="settings-card" aria-labelledby="settings-title">
+    <h1 id="settings-title">Réglages</h1>
+    <p class="settings-lead">Préférences d'affichage enregistrées dans ce navigateur.</p>
+    <div class="setting-row">
+      <div class="setting-copy">
+        <h2 id="dark-mode-label">Mode sombre</h2>
+        <p>Fond sombre pour la lecture. Désactivé, le blog passe au thème clair.</p>
+      </div>
+      <button type="button" class="theme-switch" id="dark-mode-toggle" role="switch" aria-checked="true" aria-labelledby="dark-mode-label">
+        <span class="switch-thumb"></span>
+      </button>
+    </div>
+    <p id="theme-status" class="theme-status" aria-live="polite"></p>
+  </section>
+</main>
+{footer}
+<script src="assets/js/theme.js"></script>
 </body>
 </html>
 """

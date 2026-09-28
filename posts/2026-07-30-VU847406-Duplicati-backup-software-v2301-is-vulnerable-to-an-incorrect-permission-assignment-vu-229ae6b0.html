@@ -16,6 +16,18 @@
     <meta name="twitter:title" content="VU#847406: Duplicati backup software v2.3.0.1 is vulnerable to an incorrect permission assignment vulnerability">
     <meta name="twitter:description" content="Overview Duplicati v2.3.0.1 is vulnerable to arbitrary code execution when installed outside the default C:\Program Files\Duplicati 2\ directory. An attack…">
     <meta name="category" content="security">
+    <script>
+    (function () {
+      try {
+        var theme = localStorage.getItem("abz-theme");
+        if (theme !== "light" && theme !== "dark") theme = "dark";
+        document.documentElement.setAttribute("data-theme", theme);
+        document.documentElement.style.colorScheme = theme;
+      } catch (e) {
+        document.documentElement.setAttribute("data-theme", "dark");
+      }
+    })();
+    </script>
     <link rel="stylesheet" href="../assets/css/blog.css">
 </head>
 <body>
@@ -31,6 +43,7 @@
     </a>
     <nav class="nav" aria-label="Navigation principale">
       <a href="../index.html">Accueil</a>
+      <a href="../settings.html">Réglages</a>
       <a href="https://github.com/bnzonzi/tech-watch-blog" rel="noopener" target="_blank">GitHub</a>
       <a href="https://bnzonzi.github.io/tech-watch-blog/">Live</a>
     </nav>
