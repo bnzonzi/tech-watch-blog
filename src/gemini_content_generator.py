@@ -97,7 +97,10 @@ CONTEXTE PROJET AGENTBNZO:
 - Focus: automation, monitoring, sécurité défensive, formation IA
 
 STYLE D'ÉCRITURE REQUIS:
-- Français première personne ("Je teste", "J'utilise", "Mon expérience avec")
+- Première personne obligatoire : **je** ou **nous** (jamais voix impersonnelle pour le récit principal)
+- **je** : retour perso, test solo, erreur vécue ("Je teste", "J'utilise", "Mon expérience avec")
+- **nous** : flotte agents ML / labo AgentBnZo ("Nous avons branché", "Chez nous on isole")
+- Interdit : ton neutre ("il est recommandé"), 3e personne éditoriale, voix agence ou marketing
 - Ton expert mais accessible, retour d'expérience authentique
 - Approche pratique avec exemples concrets AgentBnZo
 - Éviter le marketing, privilégier l'aspect technique
@@ -152,7 +155,8 @@ Génère un tutoriel détaillé en français sur le sujet: {topic}
    - Améliorations possibles
 
 ## CONTRAINTES:
-- Utiliser "je", "mon expérience", "j'ai testé"
+- Première personne obligatoire : **je** ou **nous** (jamais voix impersonnelle pour le récit principal)
+- Utiliser "je", "mon expérience", "j'ai testé" ou "nous", "notre flotte", "chez nous" selon le contexte
 - Exemples concrets avec outils AgentBnZo existants
 - Code Python/bash/yaml quand pertinent
 - Liens documentation officielle
@@ -194,6 +198,7 @@ Rédige un article best practice en français sur: {topic}
    - Évolutions du pattern
 
 ## STYLE:
+- Première personne obligatoire : **je** ou **nous** (jamais voix impersonnelle pour le récit principal)
 - Retour d'expérience authentique première personne
 - Focus pragmatique et opérationnel
 - Exemples tirés de cas réels AgentBnZo
@@ -235,7 +240,8 @@ Produis une analyse technique approfondie en français sur: {topic}
    - Axes d'investigation futurs
 
 ## EXIGENCES:
-- Analyse objective et factuelle
+- Première personne obligatoire : **je** ou **nous** (jamais voix impersonnelle pour le récit principal)
+- Analyse objective et factuelle (toujours à la 1re personne)
 - Métriques et données quantitatives
 - Liens avec écosystème AgentBnZo
 - Perspective technique experte
@@ -278,6 +284,7 @@ Crée un article innovation en français sur: {topic}
    - Vision long terme
 
 ## STYLE:
+- Première personne obligatoire : **je** ou **nous** (jamais voix impersonnelle pour le récit principal)
 - Exploration créative mais rigoureuse
 - Équilibre innovation/pragmatisme
 - Exemples concrets d'expérimentation

@@ -16,6 +16,18 @@
     <meta name="twitter:title" content="VU#360868: Analog Way Picturall Quad Compact Mark II contains a local privilege escalation vulnerability">
     <meta name="twitter:description" content="Overview Version 3.5.8 of Analog Way&#x27;s Picturall Quad Compact Mark II server contains a local privilege escalation vulnerability, tracked as CVE-2026-14985…">
     <meta name="category" content="security">
+    <script>
+    (function () {
+      try {
+        var theme = localStorage.getItem("abz-theme");
+        if (theme !== "light" && theme !== "dark") theme = "dark";
+        document.documentElement.setAttribute("data-theme", theme);
+        document.documentElement.style.colorScheme = theme;
+      } catch (e) {
+        document.documentElement.setAttribute("data-theme", "dark");
+      }
+    })();
+    </script>
     <link rel="stylesheet" href="../assets/css/blog.css">
 </head>
 <body>
@@ -31,6 +43,7 @@
     </a>
     <nav class="nav" aria-label="Navigation principale">
       <a href="../index.html">Accueil</a>
+      <a href="../settings.html">Réglages</a>
       <a href="https://github.com/bnzonzi/tech-watch-blog" rel="noopener" target="_blank">GitHub</a>
       <a href="https://bnzonzi.github.io/tech-watch-blog/">Live</a>
     </nav>

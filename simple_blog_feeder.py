@@ -151,7 +151,7 @@ Résumé: {source_article['summary']}
 Source: {source_article['source']}
 
 CONSIGNES:
-- Rédige en français, à la première personne
+- Rédige en français ; première personne obligatoire : **je** ou **nous** (jamais voix impersonnelle pour le récit principal)
 - Style tutorial/best-practice/retour d'expérience
 - Focus sur l'application pratique avec les outils AgentBnZo
 - 800-1200 mots

@@ -16,6 +16,18 @@
     <meta name="twitter:title" content="At AI Summit, South Korea Outlines Its AI Future With NVIDIA and Partners">
     <meta name="twitter:description" content="At this week’s AI Summit in San Francisco, South Korean President Jae Myung Lee and some of the country’s top business leaders and researchers are meeting …">
     <meta name="category" content="hardware_tech">
+    <script>
+    (function () {
+      try {
+        var theme = localStorage.getItem("abz-theme");
+        if (theme !== "light" && theme !== "dark") theme = "dark";
+        document.documentElement.setAttribute("data-theme", theme);
+        document.documentElement.style.colorScheme = theme;
+      } catch (e) {
+        document.documentElement.setAttribute("data-theme", "dark");
+      }
+    })();
+    </script>
     <link rel="stylesheet" href="../assets/css/blog.css">
 </head>
 <body>
@@ -31,6 +43,7 @@
     </a>
     <nav class="nav" aria-label="Navigation principale">
       <a href="../index.html">Accueil</a>
+      <a href="../settings.html">Réglages</a>
       <a href="https://github.com/bnzonzi/tech-watch-blog" rel="noopener" target="_blank">GitHub</a>
       <a href="https://bnzonzi.github.io/tech-watch-blog/">Live</a>
     </nav>

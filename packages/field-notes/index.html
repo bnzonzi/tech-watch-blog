@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Carnet de labo · AgentBnZo</title>
+  <meta name="description" content="Notes de terrain pour alternants IT et curieux plateforme — clone éditorial AgentBnZo.">
+  <script>
+  (function () {
+    try {
+      var theme = localStorage.getItem("fn-theme");
+      var resolved = theme === "dark" ? "dark" : theme === "system" && matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
+      if (theme !== "light" && theme !== "dark" && theme !== "system") resolved = "light";
+      document.documentElement.setAttribute("data-theme", resolved);
+      document.documentElement.style.colorScheme = resolved;
+    } catch (e) {
+      document.documentElement.setAttribute("data-theme", "light");
+    }
+  })();
+  </script>
+  <link rel="stylesheet" href="assets/css/field-notes.css">
+</head>
+<body data-persona="lea">
+<a class="fn-skip" href="#main">Aller au contenu</a>
+<header class="fn-header">
+  <div class="fn-header__inner">
+    <a class="fn-brand" href="index.html">
+      <span class="fn-brand__mark" aria-hidden="true">CL</span>
+      <span class="fn-brand__text">
+        <strong>Carnet de labo</strong>
+        <span>AgentBnZo · expériences agentiques en entreprise</span>
+      </span>
+    </a>
+    <nav class="fn-nav" aria-label="Navigation principale">
+      <a href="index.html" aria-current="page">Accueil</a>
+      <a href="playground/index.html">Playground</a>
+      <a href="settings.html">Réglages</a>
+    </nav>
+  </div>
+</header>
+<main id="main" class="fn-container fn-container--wide">
+  <section class="fn-hero fn-section" aria-labelledby="hero-title">
+    <div class="fn-hero__stripe" aria-hidden="true"></div>
+    <h1 id="hero-title" class="fn-hero__display">Ce que j’ai vraiment branché cette semaine.</h1>
+    <p class="fn-hero__sub">
+      Pas une veille RSS : des notes de labo en première personne pour alternants DSI et lecteurs qui suivent la culture outils GAFAM — avec notre flotte d’agents ML en arrière-plan.
+    </p>
+    <div class="fn-badges" style="margin-bottom: 1.5rem;">
+      <span class="fn-badge fn-badge--level">Découverte</span>
+      <span class="fn-badge fn-badge--test">J’ai testé</span>
+      <span class="fn-badge fn-badge--internal">Chez nous</span>
+    </div>
+    <div class="fn-hero__actions">
+      <a class="fn-btn fn-btn--primary" href="playground/index.html">Explorer le design system</a>
+      <a class="fn-btn fn-btn--ghost" href="settings.html">Réglages d’affichage</a>
+    </div>
+  </section>
+
+  <section class="fn-section" aria-labelledby="recent-title">
+    <h2 id="recent-title" class="fn-section__title">Dernières notes (mock)</h2>
+    <p class="fn-section__lead">Aperçu de cartes article — le contenu réel viendra du générateur clone.</p>
+    <div class="fn-card-grid">
+      <article class="fn-card">
+        <div class="fn-card__meta">
+          <time datetime="2026-09-28">28 sept. 2026</time>
+          <span>· 6 min</span>
+        </div>
+        <h3 class="fn-card__title"><a href="playground/index.html">J’ai laissé un agent relire mon pipeline vLLM</a></h3>
+        <p class="fn-card__excerpt">Ce qui a marché, ce qui a cassé le quota GPU, et pourquoi j’ai documenté l’échec avant de tweeter.</p>
+        <div class="fn-badges" style="margin-top: 1rem;">
+          <span class="fn-badge fn-badge--test">J’ai testé</span>
+          <span class="fn-badge fn-badge--fail">Échec honnête</span>
+        </div>
+      </article>
+      <article class="fn-card">
+        <div class="fn-card__meta">
+          <time datetime="2026-09-25">25 sept. 2026</time>
+          <span>· 4 min</span>
+        </div>
+        <h3 class="fn-card__title"><a href="playground/index.html">RAG interne : le prompt que nos alternants réutilisent</a></h3>
+        <p class="fn-card__excerpt">Template CrewAI partagé en labo — sans ton cours magistral.</p>
+        <div class="fn-badges" style="margin-top: 1rem;">
+          <span class="fn-badge fn-badge--internal">Chez nous</span>
+          <span class="fn-badge fn-badge--level">Pratique</span>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <aside class="fn-partner" role="note">
+    <strong>Mention partenaire</strong> — Cet encart illustre le pattern éthique : une ligne, bordure pointillée, lien <code class="fn-code-inline">rel="sponsored"</code> si besoin. Jamais en tête d’article.
+  </aside>
+</main>
+<footer class="fn-footer">
+  <div class="fn-footer__inner">
+    <div>© AgentBnZo · Carnet de labo (mock clone)</div>
+    <div>
+      <a href="playground/index.html">Playground</a>
+      ·
+      <a href="../..">Repo tech-watch-blog</a>
+    </div>
+  </div>
+</footer>
+<script src="assets/js/field-notes-theme.js"></script>
+</body>
+</html>

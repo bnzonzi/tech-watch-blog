@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Réglages · Carnet de labo</title>
+  <meta name="description" content="Préférences d'affichage du Carnet de labo AgentBnZo.">
+  <script>
+  (function () {
+    try {
+      var theme = localStorage.getItem("fn-theme");
+      var resolved = "light";
+      if (theme === "dark") resolved = "dark";
+      else if (theme === "system" && matchMedia("(prefers-color-scheme: dark)").matches) resolved = "dark";
+      document.documentElement.setAttribute("data-theme", resolved);
+      document.documentElement.style.colorScheme = resolved;
+    } catch (e) {
+      document.documentElement.setAttribute("data-theme", "light");
+    }
+  })();
+  </script>
+  <link rel="stylesheet" href="assets/css/field-notes.css">
+</head>
+<body data-persona="lea">
+<a class="fn-skip" href="#main">Aller au contenu</a>
+<header class="fn-header">
+  <div class="fn-header__inner">
+    <a class="fn-brand" href="index.html">
+      <span class="fn-brand__mark" aria-hidden="true">CL</span>
+      <span class="fn-brand__text">
+        <strong>Carnet de labo</strong>
+        <span>AgentBnZo · expériences agentiques en entreprise</span>
+      </span>
+    </a>
+    <nav class="fn-nav" aria-label="Navigation principale">
+      <a href="index.html">Accueil</a>
+      <a href="playground/index.html">Playground</a>
+      <a href="settings.html" aria-current="page">Réglages</a>
+    </nav>
+  </div>
+</header>
+<main id="main" class="fn-container">
+  <section class="fn-settings" aria-labelledby="settings-title">
+    <h1 id="settings-title">Réglages</h1>
+    <p class="fn-settings__lead">Préférences enregistrées dans ce navigateur (clé <code class="fn-code-inline">fn-theme</code>).</p>
+
+    <div class="fn-setting-row">
+      <div>
+        <h2 id="theme-mode-label">Apparence</h2>
+        <p>Le Carnet de labo est pensé clair par défaut ; le sombre reste disponible pour la lecture tardive.</p>
+      </div>
+      <select id="fn-theme-select" data-fn-theme-select aria-labelledby="theme-mode-label">
+        <option value="light">Clair</option>
+        <option value="dark">Sombre</option>
+        <option value="system">Système</option>
+      </select>
+    </div>
+
+    <div class="fn-setting-row">
+      <div>
+        <h2 id="dark-toggle-label">Basculer vite</h2>
+        <p>Interrupteur rapide clair / sombre.</p>
+      </div>
+      <button type="button" class="fn-theme-switch" data-fn-theme-switch role="switch" aria-checked="false" aria-labelledby="dark-toggle-label">
+        <span class="fn-theme-switch__thumb"></span>
+      </button>
+    </div>
+
+    <p id="fn-theme-status" class="fn-theme-status" aria-live="polite"></p>
+  </section>
+</main>
+<footer class="fn-footer">
+  <div class="fn-footer__inner">
+    <div>© AgentBnZo · Carnet de labo</div>
+    <div><a href="playground/index.html">Retour au playground</a></div>
+  </div>
+</footer>
+<script src="assets/js/field-notes-theme.js"></script>
+</body>
+</html>
