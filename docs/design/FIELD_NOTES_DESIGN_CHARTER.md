@@ -34,6 +34,27 @@
 - **Frictions :** blogs clones type Korben, esthétique hacker ou corporate générique.
 - **Besoins UX :** identité visuelle mémorable, playground / design system bookmarkable, mentions partenaires discrètes et éthiques.
 
+**Voix attendue (Malik)** : « Nous avons poussé ce flux sur la flotte agents avant de le publier » — le **nous** assume la posture AgentBnZo / labo.
+
+**Voix attendue (Léa)** : « J’ai raté le redirect OIDC deux fois avant de comprendre le scope » — le **je** pour le vécu terrain et l’apprentissage.
+
+---
+
+## 2 bis. Règle voix (éditorial obligatoire)
+
+| Choix | Quand l’utiliser | Exemple |
+|-------|------------------|---------|
+| **je** | Retour perso, test solo, erreur vécue, lecture « carnet » | « J’ai branché le feeder sur le webhook interne. » |
+| **nous** | Flotte d’agents ML, décisions labo AgentBnZo, posture collective | « Nous isolons ce namespace avant toute démo métier. » |
+
+**Interdit** pour le corps d’article et les callouts narratifs :
+
+- ton neutre ou impersonnel (« il est recommandé », « l’utilisateur peut », « cette approche permet ») ;
+- 3ᵉ personne éditoriale (« l’équipe a testé » sans **nous** ; « l’auteur constate ») ;
+- voix agence / marketing (« découvrez », « optimisez votre workflow »).
+
+Les titres peuvent rester en constat ou question ; le **récit principal** reste en **je** ou **nous**. Voir aussi `docs/EDITORIAL_VOICE.md`.
+
 ---
 
 ## 3. Différenciation visuelle vs blog Tech Watch actuel
@@ -184,7 +205,7 @@ Activée via `data-theme="dark"` sur `<html>` ; clé localStorage `fn-theme` : `
 ## 9. Principes de rédaction (alignement UX)
 
 - Titres en **question ou constat**, pas en slogan marketing.
-- Les callouts portent la voix « je » ; le corps peut rester plus neutre.
+- **Première personne obligatoire** dans tout le corps d’article : **je** ou **nous** (cf. § 2 bis) — callouts inclus.
 - Les blocs code sont courts et commentés en français si besoin.
 - Les badges ne remplacent pas le texte : ils orientent le scan.
 

@@ -361,7 +361,7 @@ OUTILS AGENTBNZO DÉTECTÉS:
 {', '.join(matched_tools)}
 
 CONSIGNES:
-- Rédige en français, à la première personne
+- Rédige en français ; première personne obligatoire : **je** ou **nous** (jamais voix impersonnelle pour le récit principal)
 - Style tutorial/best-practice/retour d'expérience
 - Focus sur l'application pratique avec les outils AgentBnZo
 - 1200-1500 mots minimum
