@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Playground · Carnet de labo Design System</title>
+  <meta name="description" content="Showroom interactif des composants Field Notes — thème, personas, callouts.">
+  <script>
+  (function () {
+    try {
+      var theme = localStorage.getItem("fn-theme");
+      var resolved = "light";
+      if (theme === "dark") resolved = "dark";
+      else if (theme === "system" && matchMedia("(prefers-color-scheme: dark)").matches) resolved = "dark";
+      document.documentElement.setAttribute("data-theme", resolved);
+      document.documentElement.style.colorScheme = resolved;
+    } catch (e) {
+      document.documentElement.setAttribute("data-theme", "light");
+    }
+  })();
+  </script>
+  <link rel="stylesheet" href="../assets/css/field-notes.css">
+  <style>
+    .fn-playground-hero {
+      margin-bottom: var(--fn-space-6);
+    }
+    .fn-anchor-nav {
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--fn-space-2);
+      margin-bottom: var(--fn-space-6);
+    }
+    .fn-anchor-nav a {
+      font-size: 0.8125rem;
+      font-weight: 600;
+      padding: 6px 12px;
+      border-radius: var(--fn-radius-pill);
+      background: var(--fn-surface);
+      border: 1px solid var(--fn-border);
+      text-decoration: none;
+    }
+    .fn-demo-block {
+      margin-bottom: var(--fn-space-6);
+    }
+  </style>
+</head>
+<body data-persona="lea">
+<a class="fn-skip" href="#main">Aller au contenu</a>
+<header class="fn-header">
+  <div class="fn-header__inner">
+    <a class="fn-brand" href="../index.html">
+      <span class="fn-brand__mark" aria-hidden="true">CL</span>
+      <span class="fn-brand__text">
+        <strong>Carnet de labo</strong>
+        <span>Design system · Field Notes</span>
+      </span>
+    </a>
+    <nav class="fn-nav" aria-label="Navigation principale">
+      <a href="../index.html">Accueil</a>
+      <a href="index.html" aria-current="page">Playground</a>
+      <a href="../settings.html">Réglages</a>
+      <button type="button" class="fn-theme-switch" data-fn-theme-switch role="switch" aria-checked="false" aria-label="Basculer thème clair ou sombre">
+        <span class="fn-theme-switch__thumb"></span>
+      </button>
+    </nav>
+  </div>
+</header>
+
+<main id="main" class="fn-container fn-container--wide">
+  <header class="fn-playground-hero">
+    <h1 class="fn-hero__display" style="max-width: none;">Playground composants</h1>
+    <p class="fn-section__lead">Showroom à bookmarker : tokens, cartes, callouts, code, et zones interactives (thème + persona + éditeur de callout).</p>
+    <nav class="fn-anchor-nav" aria-label="Sections du playground">
+      <a href="#interactive">Interactif</a>
+      <a href="#nav-hero">Nav &amp; hero</a>
+      <a href="#cards">Cartes</a>
+      <a href="#badges">Badges</a>
+      <a href="#callouts">Callouts</a>
+      <a href="#code">Code</a>
+      <a href="#partner">Partenaire</a>
+    </nav>
+  </header>
+
+  <section id="interactive" class="fn-section fn-playground" aria-labelledby="interactive-title">
+    <p class="fn-playground__label">Zone interactive</p>
+    <h2 id="interactive-title" class="fn-section__title">Contrôles live</h2>
+    <div class="fn-playground__controls">
+      <div>
+        <h3 class="fn-section__title" style="font-size: 1.125rem;">Persona preview</h3>
+        <p class="fn-section__lead" style="margin-bottom: var(--fn-space-3);">Ajuste l’accent secondaire et le texte d’aide (démo UX).</p>
+        <div class="fn-segment" role="group" aria-label="Choisir un persona">
+          <button type="button" class="fn-segment__btn" data-fn-persona="lea" aria-pressed="true">Léa · alternante</button>
+          <button type="button" class="fn-segment__btn" data-fn-persona="malik" aria-pressed="false">Malik · curieux GAFAM</button>
+        </div>
+        <p id="fn-persona-preview" class="fn-preview-pane" style="font-size: 0.9375rem; color: var(--fn-muted);"></p>
+      </div>
+      <div>
+        <h3 class="fn-section__title" style="font-size: 1.125rem;">Thème</h3>
+        <p class="fn-section__lead" style="margin-bottom: var(--fn-space-3);">Clair par défaut — aligné charter.</p>
+        <select data-fn-theme-select aria-label="Mode d'apparence">
+          <option value="light">Clair</option>
+          <option value="dark">Sombre</option>
+          <option value="system">Système</option>
+        </select>
+        <p id="fn-theme-status" class="fn-theme-status" aria-live="polite"></p>
+      </div>
+    </div>
+
+    <div id="fn-callout-playground" class="fn-demo-block" style="margin-top: var(--fn-space-6);">
+      <h3 class="fn-section__title" style="font-size: 1.125rem;">Éditeur de callout</h3>
+      <div class="fn-playground__controls">
+        <div class="fn-field">
+          <label for="fn-callout-type">Type</label>
+          <select id="fn-callout-type">
+            <option value="tested">J’ai testé</option>
+            <option value="internal">Chez nous</option>
+            <option value="fail">Échec honnête</option>
+          </select>
+        </div>
+        <div class="fn-field">
+          <label for="fn-callout-title">Titre</label>
+          <input id="fn-callout-title" type="text" value="J’ai testé">
+        </div>
+        <div class="fn-field" style="grid-column: 1 / -1;">
+          <label for="fn-callout-body">Corps</label>
+          <textarea id="fn-callout-body">L’agent a bien résumé les logs, mais a inventé un nom de bucket S3 — j’ai dû corriger avant de montrer à l’équipe.</textarea>
+        </div>
+      </div>
+      <div class="fn-preview-pane">
+        <aside id="fn-callout-preview" class="fn-callout fn-callout--tested">
+          <p class="fn-callout__title">J’ai testé</p>
+          <p class="fn-callout__body"></p>
+        </aside>
+      </div>
+    </div>
+  </section>
+
+  <section id="nav-hero" class="fn-section fn-demo-block" aria-labelledby="nav-hero-title">
+    <h2 id="nav-hero-title" class="fn-section__title">Hero éditorial</h2>
+    <div class="fn-hero">
+      <div class="fn-hero__stripe" aria-hidden="true"></div>
+      <p class="fn-badges">
+        <span class="fn-badge fn-badge--level">Pratique</span>
+      </p>
+      <h3 class="fn-hero__display" style="font-size: 1.75rem;">Pourquoi documenter l’échec avant la démo client</h3>
+      <p class="fn-hero__sub">Exemple de hero article — titre court, sous-titre pédagogique.</p>
+      <div class="fn-hero__actions">
+        <span class="fn-btn fn-btn--primary">Lire la note</span>
+        <span class="fn-btn fn-btn--ghost">Copier le lien</span>
+      </div>
+    </div>
+  </section>
+
+  <section id="cards" class="fn-section fn-demo-block" aria-labelledby="cards-title">
+    <h2 id="cards-title" class="fn-section__title">Cartes article</h2>
+    <div class="fn-card-grid">
+      <article class="fn-card">
+        <div class="fn-card__meta"><time datetime="2026-09-20">20 sept. 2026</time> · Agents</div>
+        <h3 class="fn-card__title"><a href="#">Benchmark local vs endpoint managé</a></h3>
+        <p class="fn-card__excerpt">Chiffres bruts, pas de marketing.</p>
+      </article>
+      <article class="fn-card">
+        <div class="fn-card__meta"><time datetime="2026-09-18">18 sept. 2026</time> · Plateforme</div>
+        <h3 class="fn-card__title"><a href="#">OIDC : ce que j’ai mal configuré</a></h3>
+        <p class="fn-card__excerpt">Redirect URI et scopes — erreurs classiques.</p>
+      </article>
+    </div>
+  </section>
+
+  <section id="badges" class="fn-section fn-demo-block" aria-labelledby="badges-title">
+    <h2 id="badges-title" class="fn-section__title">Pile de badges</h2>
+    <div class="fn-chip-row">
+      <span class="fn-badge fn-badge--level">Découverte</span>
+      <span class="fn-badge fn-badge--level">Pratique</span>
+      <span class="fn-badge fn-badge--test">J’ai testé</span>
+      <span class="fn-badge fn-badge--internal">Chez nous</span>
+      <span class="fn-badge fn-badge--fail">Échec honnête</span>
+      <span class="fn-badge fn-badge--partner">Mention partenaire</span>
+    </div>
+  </section>
+
+  <section id="callouts" class="fn-section fn-demo-block" aria-labelledby="callouts-title">
+    <h2 id="callouts-title" class="fn-section__title">Callouts statiques</h2>
+    <aside class="fn-callout fn-callout--tested">
+      <p class="fn-callout__title">J’ai testé</p>
+      <p class="fn-callout__body">J’ai branché le feeder CrewAI sur un webhook interne — latence OK, parsing JSON fragile.</p>
+    </aside>
+    <aside class="fn-callout fn-callout--internal">
+      <p class="fn-callout__title">Chez nous</p>
+      <p class="fn-callout__body">En labo AgentBnZo, on isole ce flux sur un namespace dédié avant toute démo métier.</p>
+    </aside>
+    <aside class="fn-callout fn-callout--fail">
+      <p class="fn-callout__title">Échec honnête</p>
+      <p class="fn-callout__body">Le RAG a mélangé deux versions de doc — j’ai retiré l’article du flux jusqu’au correctif.</p>
+    </aside>
+  </section>
+
+  <section id="code" class="fn-section fn-demo-block" aria-labelledby="code-title">
+    <h2 id="code-title" class="fn-section__title">Blocs code</h2>
+    <p>Variable d’env : <code class="fn-code-inline">CREWAI_TELEMETRY=false</code></p>
+    <pre class="fn-pre"><code># Extrait agent — Carnet de labo
+from crewai import Agent
+
+researcher = Agent(
+    role="Veille terrain",
+    goal="Résumer sans inventer de CVE",
+    backstory="Alternant qui vérifie chaque lien",
+)</code></pre>
+  </section>
+
+  <section id="partner" class="fn-section fn-demo-block" aria-labelledby="partner-title">
+    <h2 id="partner-title" class="fn-section__title">Partenaire (éthique UI)</h2>
+    <div class="fn-partner">
+      <strong>Mention partenaire</strong> — Outil utilisé en labo pour ce test ; pas de compensation pour mentionner l’échec ci-dessus.
+      <a href="#" rel="sponsored noopener">En savoir plus</a>
+    </div>
+    <p style="margin-top: var(--fn-space-3);">
+      <span class="fn-partner fn-partner--inline">Inline discret dans un paragraphe.</span>
+    </p>
+  </section>
+</main>
+
+<footer class="fn-footer">
+  <div class="fn-footer__inner">
+    <div>Field Notes v1 · <a href="../../../docs/design/FIELD_NOTES_DESIGN_CHARTER.md">Charter</a></div>
+    <div><a href="../index.html">Landing mock</a></div>
+  </div>
+</footer>
+<script src="../assets/js/field-notes-theme.js"></script>
+</body>
+</html>
