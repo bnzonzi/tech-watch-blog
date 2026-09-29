@@ -284,6 +284,7 @@ Crée un article innovation en français sur: {topic}
    - Vision long terme
 
 ## STYLE:
+- Première personne obligatoire : **je** ou **nous** (jamais voix impersonnelle pour le récit principal)
 - Exploration créative mais rigoureuse
 - Équilibre innovation/pragmatisme
 - Exemples concrets d'expérimentation
